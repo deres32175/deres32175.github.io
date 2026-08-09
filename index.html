@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,63 +14,21 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #08080d;
+      background: #090612;
       color: #fff;
       line-height: 1.6;
     }
 
-    /* NAVIGATION */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-
-      display: flex;
-      justify-content: center;
-      gap: 35px;
-
-      padding: 18px 20px;
-
-      background: rgba(8, 8, 13, 0.92);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff5f8f;
-    }
-
-    /* HERO */
     .hero {
-      min-height: 100vh;
-
+      min-height: 90vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 120px 20px 80px;
-
+      padding: 80px 8%;
       background:
-        radial-gradient(circle at 50% 30%, rgba(255, 80, 150, 0.28), transparent 35%),
-        linear-gradient(135deg, #120c25, #090914 55%, #111827);
+        linear-gradient(135deg, rgba(9,6,18,.92), rgba(30,5,45,.82)),
+        radial-gradient(circle at 80% 20%, #ff1493, transparent 35%);
     }
 
     .hero-content {
@@ -77,335 +36,194 @@
     }
 
     .small-title {
-      color: #ffcc70;
-      letter-spacing: 5px;
-      font-size: 14px;
+      color: #ff4fc3;
       font-weight: bold;
+      letter-spacing: 5px;
       margin-bottom: 15px;
     }
 
-    .hero h1 {
-      font-size: clamp(70px, 15vw, 160px);
-      line-height: 0.78;
-      letter-spacing: 8px;
-
-      color: #ff5c9a;
-
+    h1 {
+      font-size: clamp(70px, 12vw, 150px);
+      line-height: .8;
+      color: #ff3cac;
       text-shadow:
-        5px 5px 0 #743cff,
-        0 0 30px rgba(255, 92, 154, 0.5);
+        0 0 10px #ff1493,
+        0 0 30px #ff1493,
+        0 0 60px #8a2be2;
+      margin-bottom: 35px;
     }
 
     .subtitle {
       max-width: 700px;
-      margin: 35px auto;
-
+      font-size: 18px;
       color: #ddd;
-      font-size: 17px;
+      margin-bottom: 35px;
     }
 
     .buttons {
       display: flex;
-      justify-content: center;
-      gap: 15px;
       flex-wrap: wrap;
+      gap: 15px;
     }
 
     .btn {
       display: inline-block;
-
-      padding: 14px 25px;
-
+      padding: 14px 24px;
       border-radius: 8px;
-
       text-decoration: none;
       font-weight: bold;
-
-      transition: 0.3s;
+      transition: .25s;
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, #ff4f91, #8d45ff);
+      background: linear-gradient(90deg, #ff1493, #8a2be2);
       color: white;
+      box-shadow: 0 0 20px rgba(255,20,147,.4);
     }
 
     .btn.secondary {
-      border: 1px solid #ff5c9a;
+      border: 2px solid #ff3cac;
       color: #fff;
     }
 
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255, 80, 150, 0.25);
+      box-shadow: 0 0 25px rgba(255,20,147,.6);
     }
 
-    /* GENERAL SECTIONS */
     section {
-      padding: 85px 20px;
-      max-width: 1100px;
-      margin: auto;
+      padding: 80px 8%;
     }
 
     .section-title {
       text-align: center;
+      color: #ff4fc3;
       font-size: 36px;
-      margin-bottom: 40px;
-
-      color: #fff;
-
-      text-shadow: 0 0 15px rgba(255, 92, 154, 0.25);
+      margin-bottom: 35px;
     }
 
-    /* ABOUT */
     .game-card {
-      max-width: 850px;
+      max-width: 900px;
       margin: auto;
-
-      padding: 35px;
-
-      background: #12121b;
-
-      border: 1px solid #29293a;
+      background: #151020;
+      border: 1px solid #3c1c50;
       border-radius: 15px;
-
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      padding: 35px;
+      box-shadow: 0 0 30px rgba(255,20,147,.08);
     }
 
     .game-card h3 {
-      color: #ff6b9d;
-      margin-bottom: 18px;
+      color: #ff8bd8;
+      margin-bottom: 20px;
       font-size: 25px;
     }
 
-    .game-card p {
-      color: #ccc;
-    }
-
-    /* FEATURES */
-    .features {
+    .features,
+    .info,
+    .posts-grid {
+      max-width: 1100px;
+      margin: auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      gap: 22px;
     }
 
-    .feature {
-      background: #12121b;
-
-      padding: 30px;
-
+    .feature,
+    .info-box,
+    .post-card {
+      background: #151020;
+      border: 1px solid #3c1c50;
       border-radius: 15px;
-      border: 1px solid #29293a;
-
-      text-align: center;
-
-      transition: 0.3s;
+      padding: 28px;
+      transition: .25s;
     }
 
-    .feature:hover {
-      transform: translateY(-7px);
-      border-color: #ff5c9a;
+    .feature:hover,
+    .post-card:hover {
+      transform: translateY(-5px);
+      border-color: #ff3cac;
+      box-shadow: 0 0 25px rgba(255,20,147,.15);
     }
 
     .icon {
-      font-size: 42px;
-      margin-bottom: 15px;
+      font-size: 40px;
+      margin-bottom: 10px;
     }
 
-    .feature h3 {
-      color: #ff7da9;
-      margin-bottom: 12px;
+    .feature h3,
+    .post-card h3 {
+      color: #ff7bd1;
+      margin-bottom: 10px;
     }
 
-    .feature p {
-      color: #bbb;
-    }
-
-    /* PC INFO */
     .info {
-      display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
     }
 
     .info-box {
-      background: #12121b;
-      padding: 25px;
-
-      border-radius: 12px;
-      border: 1px solid #29293a;
-
       text-align: center;
-      color: #ccc;
     }
 
     .info-box strong {
-      color: #ff6b9d;
-      display: inline-block;
-      margin-bottom: 7px;
-    }
-
-    /* POSTS */
-    .posts-section {
-      max-width: 1100px;
+      color: #ff4fc3;
     }
 
     .posts-intro {
       text-align: center;
-      color: #aaa;
-      margin-top: -20px;
-      margin-bottom: 40px;
-    }
-
-    .posts-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .post-card {
-      background: #12121b;
-
-      padding: 28px;
-
-      border: 1px solid #29293a;
-      border-radius: 15px;
-
-      transition: 0.3s;
-    }
-
-    .post-card:hover {
-      transform: translateY(-7px);
-      border-color: #ff5c9a;
-
-      box-shadow:
-        0 15px 35px rgba(255, 70, 140, 0.12);
+      color: #bbb;
+      margin-bottom: 35px;
     }
 
     .post-date {
-      color: #ff6b9d;
-      font-size: 13px;
-      font-weight: bold;
-
-      margin-bottom: 12px;
-    }
-
-    .post-card h3 {
-      font-size: 21px;
-      margin-bottom: 12px;
-    }
-
-    .post-card p {
-      color: #bbb;
-      margin-bottom: 20px;
+      color: #ff4fc3;
+      font-size: 14px;
+      margin-bottom: 10px;
     }
 
     .read-more {
-      color: #ff6b9d;
+      display: inline-block;
+      margin-top: 18px;
+      color: #ff5fc8;
       text-decoration: none;
       font-weight: bold;
     }
 
-    .read-more:hover {
-      color: #fff;
-    }
-
-    /* FOOTER */
     footer {
       text-align: center;
-
       padding: 40px 20px;
-
-      background: #050509;
-
-      border-top: 1px solid #222;
+      background: #05030a;
+      color: #aaa;
     }
 
-    footer p {
-      color: #888;
-      font-size: 14px;
-    }
-
-    footer .disclaimer {
+    .disclaimer {
       margin-top: 10px;
-      color: #666;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 13px;
+      color: #777;
     }
 
-    /* MOBILE */
     @media (max-width: 800px) {
-
-      nav {
-        gap: 18px;
-      }
-
-      nav a {
-        font-size: 12px;
-      }
-
       .features,
+      .info,
       .posts-grid {
         grid-template-columns: 1fr;
       }
 
-      .info {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero h1 {
-        letter-spacing: 4px;
-      }
-
-      .subtitle {
-        font-size: 15px;
-      }
-    }
-
-    @media (max-width: 500px) {
-
-      nav {
-        gap: 12px;
-        padding: 15px 10px;
-      }
-
-      nav a {
-        font-size: 11px;
+      .hero {
+        padding: 60px 6%;
       }
 
       section {
-        padding: 65px 15px;
+        padding: 60px 6%;
       }
 
-      .section-title {
-        font-size: 29px;
-      }
-
-      .info {
-        grid-template-columns: 1fr;
-      }
-
-      .game-card,
-      .feature,
-      .post-card {
-        padding: 22px;
+      h1 {
+        font-size: 80px;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <div>
-      <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#requirements">PC</a>
-      <a href="#posts">Posts</a>
-    </div>
-  </nav>
-
 
   <!-- HERO -->
   <header class="hero">
@@ -424,13 +242,14 @@
 
       <div class="buttons">
 
+        <!-- YOUR LINK -->
         <a
           class="btn primary"
-          href="https://www.rockstargames.com/games/vicecity"
+          href="https://getintowin.sbs/free-game/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          🎮 OFFICIAL GAME PAGE
+          🎮 PLAY / DOWNLOAD
         </a>
 
         <a class="btn secondary" href="#about">
@@ -475,7 +294,7 @@
 
 
   <!-- FEATURES -->
-  <section id="features">
+  <section>
 
     <h2 class="section-title">
       Game Features
@@ -529,8 +348,8 @@
   </section>
 
 
-  <!-- PC GAME INFO -->
-  <section id="requirements">
+  <!-- GAME INFO -->
+  <section>
 
     <h2 class="section-title">
       PC Game Info
@@ -578,8 +397,8 @@
   </section>
 
 
-  <!-- LATEST POSTS -->
-  <section id="posts" class="posts-section">
+  <!-- POSTS -->
+  <section id="posts">
 
     <h2 class="section-title">
       Latest Posts
@@ -651,7 +470,7 @@
           guides and information about classic PC games.
         </p>
 
-        <a href="#requirements" class="read-more">
+        <a href="#about" class="read-more">
           Read More →
         </a>
 
