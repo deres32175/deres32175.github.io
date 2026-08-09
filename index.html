@@ -1,10 +1,450 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vice City - PC Games</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #10001f;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 0, 25, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 0, 180, 0.3);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #ff42c6;
+      text-shadow: 0 0 15px #ff00aa;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ff4acb;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 150px 8% 80px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 30%, #ff1493 0%, transparent 25%),
+        radial-gradient(circle at 20% 80%, #5c00ff 0%, transparent 30%),
+        linear-gradient(135deg, #12002b, #25004b, #090016);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      right: -150px;
+      bottom: -300px;
+      border-radius: 50%;
+      background: #ff7b00;
+      opacity: 0.15;
+      filter: blur(80px);
+    }
+
+    .hero-content {
+      max-width: 700px;
+      z-index: 2;
+    }
+
+    .small-title {
+      color: #ff62cf;
+      letter-spacing: 5px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 10vw, 110px);
+      line-height: 0.85;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #ffb3e6;
+      text-shadow:
+        5px 5px 0 #ff1493,
+        10px 10px 0 #7b00ff,
+        0 0 30px #ff00aa;
+    }
+
+    .subtitle {
+      margin-top: 30px;
+      font-size: 21px;
+      line-height: 1.7;
+      color: #eee;
+      max-width: 600px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      margin-right: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(90deg, #ff1493, #8b2cff);
+      box-shadow: 0 0 25px rgba(255, 20, 147, 0.5);
+    }
+
+    .secondary {
+      color: white;
+      border: 1px solid #ff42c6;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px #ff1493;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 50px;
+      color: #ff70d2;
+      text-shadow: 0 0 15px #ff1493;
+    }
+
+    /* GAME CARD */
+    .game-card {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px;
+      border-radius: 20px;
+      background: linear-gradient(
+        145deg,
+        rgba(255, 20, 147, 0.15),
+        rgba(80, 0, 160, 0.18)
+      );
+      border: 1px solid rgba(255, 80, 200, 0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .game-card h3 {
+      font-size: 30px;
+      color: #ff8ada;
+      margin-bottom: 15px;
+    }
+
+    .game-card p {
+      color: #ddd;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .feature {
+      padding: 30px;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255, 70, 200, 0.25);
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+      border-color: #ff42c6;
+      box-shadow: 0 0 25px rgba(255,20,147,0.25);
+    }
+
+    .feature .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      color: #ff7bd5;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* INFO */
+    .info {
+      max-width: 800px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .info-box {
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-left: 3px solid #ff2cb5;
+      border-radius: 8px;
+    }
+
+    .info-box strong {
+      color: #ff6dcc;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 35px;
+      background: #07000f;
+      color: #888;
+    }
+
+    footer span {
+      color: #ff42c6;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav a {
+        margin-left: 10px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 130px 7% 70px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .info {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 7%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Hello World!</h1>
-    <p>Welcome to my website.</p>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">VICE CITY</div>
+
+    <div>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#requirements">PC</a>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="small-title">WELCOME TO THE 80s</div>
+
+      <h1>VICE<br>CITY</h1>
+
+      <p class="subtitle">
+        Step into a neon-lit world of sunshine, beaches,
+        fast cars and unforgettable crime stories.
+        Experience one of Rockstar's classic Grand Theft Auto adventures.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn primary"
+          href="https://www.rockstargames.com/games/vicecity"
+          target="_blank"
+        >
+          🎮 OFFICIAL GAME PAGE
+        </a>
+
+        <a class="btn secondary" href="#about">
+          EXPLORE
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <h2 class="section-title">Grand Theft Auto: Vice City</h2>
+
+    <div class="game-card">
+
+      <h3>🌴 Welcome to Vice City</h3>
+
+      <p>
+        Set in the 1980s, Grand Theft Auto: Vice City takes
+        players into a colorful city filled with beaches,
+        nightlife, vehicles and a character-driven story.
+      </p>
+
+      <br>
+
+      <p>
+        Explore the city, complete missions and experience
+        the classic open-world gameplay that made Vice City
+        one of the most memorable GTA games.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+  <section id="features">
+
+    <h2 class="section-title">Game Features</h2>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="icon">🌴</div>
+        <h3>Open World</h3>
+        <p>
+          Explore a large 1980s-inspired city with beaches,
+          streets and different neighborhoods.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">🚗</div>
+        <h3>Vehicles</h3>
+        <p>
+          Drive cars, motorcycles, boats and other vehicles
+          around the city.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">🎵</div>
+        <h3>80s Atmosphere</h3>
+        <p>
+          Enjoy the colorful neon style and atmosphere
+          inspired by the 1980s.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PC INFO -->
+  <section id="requirements">
+
+    <h2 class="section-title">PC Game Info</h2>
+
+    <div class="info">
+
+      <div class="info-box">
+        <strong>Developer</strong><br>
+        Rockstar North
+      </div>
+
+      <div class="info-box">
+        <strong>Release Date</strong><br>
+        October 27, 2002
+      </div>
+
+      <div class="info-box">
+        <strong>Platform</strong><br>
+        PC, Mac and other platforms
+      </div>
+
+      <div class="info-box">
+        <strong>Genre</strong><br>
+        Action / Open World
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2026 <span>Vice City PC Games</span>
+    </p>
+
+    <p style="margin-top:10px;">
+      This is a fan-made website. Grand Theft Auto and
+      related trademarks belong to their respective owners.
+    </p>
+  </footer>
+
 </body>
 </html>
