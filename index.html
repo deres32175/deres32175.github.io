@@ -4,282 +4,391 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Vice City - PC Games</title>
+  <title>Vice City PC Games</title>
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #10001f;
-      color: white;
-      overflow-x: hidden;
+      background: #08080d;
+      color: #fff;
+      line-height: 1.6;
     }
 
-    /* NAVBAR */
+    /* NAVIGATION */
     nav {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 0, 25, 0.85);
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      border-bottom: 1px solid rgba(255, 0, 180, 0.3);
-    }
+      z-index: 1000;
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      color: #ff42c6;
-      text-shadow: 0 0 15px #ff00aa;
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+
+      padding: 18px 20px;
+
+      background: rgba(8, 8, 13, 0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
     }
 
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      margin-left: 25px;
       font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #ff4acb;
+      color: #ff5f8f;
     }
 
     /* HERO */
     .hero {
       min-height: 100vh;
-      padding: 150px 8% 80px;
+
       display: flex;
       align-items: center;
-      background:
-        radial-gradient(circle at 80% 30%, #ff1493 0%, transparent 25%),
-        radial-gradient(circle at 20% 80%, #5c00ff 0%, transparent 30%),
-        linear-gradient(135deg, #12002b, #25004b, #090016);
-      position: relative;
-      overflow: hidden;
-    }
+      justify-content: center;
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      right: -150px;
-      bottom: -300px;
-      border-radius: 50%;
-      background: #ff7b00;
-      opacity: 0.15;
-      filter: blur(80px);
+      text-align: center;
+
+      padding: 120px 20px 80px;
+
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255, 80, 150, 0.28), transparent 35%),
+        linear-gradient(135deg, #120c25, #090914 55%, #111827);
     }
 
     .hero-content {
-      max-width: 700px;
-      z-index: 2;
+      max-width: 850px;
     }
 
     .small-title {
-      color: #ff62cf;
+      color: #ffcc70;
       letter-spacing: 5px;
+      font-size: 14px;
       font-weight: bold;
       margin-bottom: 15px;
     }
 
-    h1 {
-      font-size: clamp(55px, 10vw, 110px);
-      line-height: 0.85;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: #ffb3e6;
+    .hero h1 {
+      font-size: clamp(70px, 15vw, 160px);
+      line-height: 0.78;
+      letter-spacing: 8px;
+
+      color: #ff5c9a;
+
       text-shadow:
-        5px 5px 0 #ff1493,
-        10px 10px 0 #7b00ff,
-        0 0 30px #ff00aa;
+        5px 5px 0 #743cff,
+        0 0 30px rgba(255, 92, 154, 0.5);
     }
 
     .subtitle {
-      margin-top: 30px;
-      font-size: 21px;
-      line-height: 1.7;
-      color: #eee;
-      max-width: 600px;
+      max-width: 700px;
+      margin: 35px auto;
+
+      color: #ddd;
+      font-size: 17px;
     }
 
     .buttons {
-      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-block;
-      padding: 15px 28px;
-      margin-right: 12px;
-      margin-bottom: 10px;
+
+      padding: 14px 25px;
+
       border-radius: 8px;
+
       text-decoration: none;
       font-weight: bold;
+
       transition: 0.3s;
     }
 
-    .primary {
+    .btn.primary {
+      background: linear-gradient(135deg, #ff4f91, #8d45ff);
       color: white;
-      background: linear-gradient(90deg, #ff1493, #8b2cff);
-      box-shadow: 0 0 25px rgba(255, 20, 147, 0.5);
     }
 
-    .secondary {
-      color: white;
-      border: 1px solid #ff42c6;
-      background: rgba(255,255,255,0.05);
+    .btn.secondary {
+      border: 1px solid #ff5c9a;
+      color: #fff;
     }
 
     .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 30px #ff1493;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 80, 150, 0.25);
     }
 
-    /* SECTIONS */
+    /* GENERAL SECTIONS */
     section {
-      padding: 80px 8%;
+      padding: 85px 20px;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .section-title {
       text-align: center;
-      font-size: 40px;
-      margin-bottom: 50px;
-      color: #ff70d2;
-      text-shadow: 0 0 15px #ff1493;
+      font-size: 36px;
+      margin-bottom: 40px;
+
+      color: #fff;
+
+      text-shadow: 0 0 15px rgba(255, 92, 154, 0.25);
     }
 
-    /* GAME CARD */
+    /* ABOUT */
     .game-card {
-      max-width: 1000px;
+      max-width: 850px;
       margin: auto;
+
       padding: 35px;
-      border-radius: 20px;
-      background: linear-gradient(
-        145deg,
-        rgba(255, 20, 147, 0.15),
-        rgba(80, 0, 160, 0.18)
-      );
-      border: 1px solid rgba(255, 80, 200, 0.4);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+
+      background: #12121b;
+
+      border: 1px solid #29293a;
+      border-radius: 15px;
+
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     }
 
     .game-card h3 {
-      font-size: 30px;
-      color: #ff8ada;
-      margin-bottom: 15px;
+      color: #ff6b9d;
+      margin-bottom: 18px;
+      font-size: 25px;
     }
 
     .game-card p {
-      color: #ddd;
-      line-height: 1.8;
-      font-size: 17px;
+      color: #ccc;
     }
 
     /* FEATURES */
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
+      gap: 25px;
     }
 
     .feature {
+      background: #12121b;
+
       padding: 30px;
-      text-align: center;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255, 70, 200, 0.25);
+
       border-radius: 15px;
+      border: 1px solid #29293a;
+
+      text-align: center;
+
       transition: 0.3s;
     }
 
     .feature:hover {
-      transform: translateY(-8px);
-      border-color: #ff42c6;
-      box-shadow: 0 0 25px rgba(255,20,147,0.25);
+      transform: translateY(-7px);
+      border-color: #ff5c9a;
     }
 
-    .feature .icon {
-      font-size: 40px;
+    .icon {
+      font-size: 42px;
       margin-bottom: 15px;
     }
 
     .feature h3 {
-      color: #ff7bd5;
-      margin-bottom: 10px;
+      color: #ff7da9;
+      margin-bottom: 12px;
     }
 
     .feature p {
-      color: #ccc;
-      line-height: 1.6;
+      color: #bbb;
     }
 
-    /* INFO */
+    /* PC INFO */
     .info {
-      max-width: 800px;
-      margin: auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
 
     .info-box {
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      border-left: 3px solid #ff2cb5;
-      border-radius: 8px;
+      background: #12121b;
+      padding: 25px;
+
+      border-radius: 12px;
+      border: 1px solid #29293a;
+
+      text-align: center;
+      color: #ccc;
     }
 
     .info-box strong {
-      color: #ff6dcc;
+      color: #ff6b9d;
+      display: inline-block;
+      margin-bottom: 7px;
+    }
+
+    /* POSTS */
+    .posts-section {
+      max-width: 1100px;
+    }
+
+    .posts-intro {
+      text-align: center;
+      color: #aaa;
+      margin-top: -20px;
+      margin-bottom: 40px;
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .post-card {
+      background: #12121b;
+
+      padding: 28px;
+
+      border: 1px solid #29293a;
+      border-radius: 15px;
+
+      transition: 0.3s;
+    }
+
+    .post-card:hover {
+      transform: translateY(-7px);
+      border-color: #ff5c9a;
+
+      box-shadow:
+        0 15px 35px rgba(255, 70, 140, 0.12);
+    }
+
+    .post-date {
+      color: #ff6b9d;
+      font-size: 13px;
+      font-weight: bold;
+
+      margin-bottom: 12px;
+    }
+
+    .post-card h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .post-card p {
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      color: #ff6b9d;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .read-more:hover {
+      color: #fff;
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      padding: 35px;
-      background: #07000f;
-      color: #888;
+
+      padding: 40px 20px;
+
+      background: #050509;
+
+      border-top: 1px solid #222;
     }
 
-    footer span {
-      color: #ff42c6;
+    footer p {
+      color: #888;
+      font-size: 14px;
+    }
+
+    footer .disclaimer {
+      margin-top: 10px;
+      color: #666;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* MOBILE */
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
+
       nav {
-        padding: 15px 5%;
+        gap: 18px;
       }
 
       nav a {
-        margin-left: 10px;
-        font-size: 13px;
+        font-size: 12px;
       }
 
-      .hero {
-        padding: 130px 7% 70px;
-      }
-
-      .features {
+      .features,
+      .posts-grid {
         grid-template-columns: 1fr;
+      }
+
+      .info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        letter-spacing: 4px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      nav {
+        gap: 12px;
+        padding: 15px 10px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      section {
+        padding: 65px 15px;
+      }
+
+      .section-title {
+        font-size: 29px;
       }
 
       .info {
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 60px 7%;
+      .game-card,
+      .feature,
+      .post-card {
+        padding: 22px;
       }
     }
   </style>
@@ -289,12 +398,11 @@
 
   <!-- NAVIGATION -->
   <nav>
-    <div class="logo">VICE CITY</div>
-
     <div>
       <a href="#about">About</a>
       <a href="#features">Features</a>
       <a href="#requirements">PC</a>
+      <a href="#posts">Posts</a>
     </div>
   </nav>
 
@@ -320,6 +428,7 @@
           class="btn primary"
           href="https://www.rockstargames.com/games/vicecity"
           target="_blank"
+          rel="noopener noreferrer"
         >
           🎮 OFFICIAL GAME PAGE
         </a>
@@ -338,7 +447,9 @@
   <!-- ABOUT -->
   <section id="about">
 
-    <h2 class="section-title">Grand Theft Auto: Vice City</h2>
+    <h2 class="section-title">
+      Grand Theft Auto: Vice City
+    </h2>
 
     <div class="game-card">
 
@@ -366,35 +477,51 @@
   <!-- FEATURES -->
   <section id="features">
 
-    <h2 class="section-title">Game Features</h2>
+    <h2 class="section-title">
+      Game Features
+    </h2>
 
     <div class="features">
 
       <div class="feature">
+
         <div class="icon">🌴</div>
+
         <h3>Open World</h3>
+
         <p>
           Explore a large 1980s-inspired city with beaches,
           streets and different neighborhoods.
         </p>
+
       </div>
 
+
       <div class="feature">
+
         <div class="icon">🚗</div>
+
         <h3>Vehicles</h3>
+
         <p>
           Drive cars, motorcycles, boats and other vehicles
           around the city.
         </p>
+
       </div>
 
+
       <div class="feature">
+
         <div class="icon">🎵</div>
+
         <h3>80s Atmosphere</h3>
+
         <p>
           Enjoy the colorful neon style and atmosphere
           inspired by the 1980s.
         </p>
+
       </div>
 
     </div>
@@ -402,32 +529,133 @@
   </section>
 
 
-  <!-- PC INFO -->
+  <!-- PC GAME INFO -->
   <section id="requirements">
 
-    <h2 class="section-title">PC Game Info</h2>
+    <h2 class="section-title">
+      PC Game Info
+    </h2>
 
     <div class="info">
 
       <div class="info-box">
+
         <strong>Developer</strong><br>
+
         Rockstar North
+
       </div>
 
+
       <div class="info-box">
+
         <strong>Release Date</strong><br>
+
         October 27, 2002
+
       </div>
 
+
       <div class="info-box">
+
         <strong>Platform</strong><br>
+
         PC, Mac and other platforms
+
       </div>
 
+
       <div class="info-box">
+
         <strong>Genre</strong><br>
+
         Action / Open World
+
       </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LATEST POSTS -->
+  <section id="posts" class="posts-section">
+
+    <h2 class="section-title">
+      Latest Posts
+    </h2>
+
+    <p class="posts-intro">
+      Fan-made updates, gaming information and Vice City articles.
+    </p>
+
+
+    <div class="posts-grid">
+
+      <article class="post-card">
+
+        <div class="post-date">
+          August 10, 2026
+        </div>
+
+        <h3>
+          Welcome to Vice City PC Games
+        </h3>
+
+        <p>
+          Welcome to our fan-made Vice City gaming website.
+          Explore game information, features, tips and updates.
+        </p>
+
+        <a href="#posts" class="read-more">
+          Read More →
+        </a>
+
+      </article>
+
+
+      <article class="post-card">
+
+        <div class="post-date">
+          August 9, 2026
+        </div>
+
+        <h3>
+          Grand Theft Auto: Vice City
+        </h3>
+
+        <p>
+          Discover the classic Vice City experience,
+          its iconic locations, characters and memorable gameplay.
+        </p>
+
+        <a href="#about" class="read-more">
+          Read More →
+        </a>
+
+      </article>
+
+
+      <article class="post-card">
+
+        <div class="post-date">
+          August 8, 2026
+        </div>
+
+        <h3>
+          PC Gaming Updates
+        </h3>
+
+        <p>
+          Check back for more fan-made gaming articles,
+          guides and information about classic PC games.
+        </p>
+
+        <a href="#requirements" class="read-more">
+          Read More →
+        </a>
+
+      </article>
 
     </div>
 
@@ -436,14 +664,16 @@
 
   <!-- FOOTER -->
   <footer>
+
     <p>
-      © 2026 <span>Vice City PC Games</span>
+      © 2026 Vice City PC Games — Fan Website
     </p>
 
-    <p style="margin-top:10px;">
+    <p class="disclaimer">
       This is a fan-made website. Grand Theft Auto and
       related trademarks belong to their respective owners.
     </p>
+
   </footer>
 
 </body>
